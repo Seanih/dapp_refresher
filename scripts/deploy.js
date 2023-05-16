@@ -13,7 +13,7 @@ async function main() {
 
 	await contract.deployed();
 
-	let tx = await contract.addPerson('Sean Anih', 35, 'Software Engineer');
+	let tx = await contract.addPerson('Sean A.', 35, 'Software Engineer');
 	await tx.wait();
 
 	console.log(
@@ -21,7 +21,9 @@ async function main() {
 			contract.address
 		}\nAddress that deployed contract: ${
 			owner.address
-		}\nAddress listed as "owner" in contract: ${await contract.owner()}`
+		}\nAddress listed as "owner" in contract: ${await contract.owner()}\nFirst person added:\n--${await contract.allPeople(
+			0
+		)}`
 	);
 }
 
